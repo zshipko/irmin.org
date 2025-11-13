@@ -163,6 +163,7 @@ let add_car store car_number car =
     Car_store.set_exn store [car_number] car ~info
 
 let () =
+    Eio_main.run @@ fun _ ->
     let config = Irmin_mem.config () in
     let repo = Car_store.Repo.v config in
     let t = Car_store.main repo in
@@ -270,6 +271,7 @@ module S = Irmin_mem.KV.Make (Value)
 module I = Irmin_unix.Info(S.Info)
 
 let () =
+    Eio_main.run @@ fun _ ->
     (* Configure the repo *)
     let cfg = Irmin_mem.config () in
     (* Access the main branch *)

@@ -131,6 +131,7 @@ module Mem_info = Irmin_unix.Info(Mem_store.Info)
 let info message = Mem_info.v ~author:"Example" "%s" message
 
 let () =
+    Eio_main.run @@ fun _ ->
     let t = main_branch config in
     (* Set a/b/c to "Hello, Irmin!" *)
     let () = Mem_store.set_exn t ["a"; "b"; "c"] "Hello, Irmin!" ~info:(info "my first commit") in
@@ -146,6 +147,7 @@ apply them all at once. This is done using [`with_tree`][irmin.s-with_tree]:
 
 ```ocaml
 let () =
+    Eio_main.run @@ fun _ ->
     let t = main_branch config in
     let info = info "example transaction" in
     Mem_store.with_tree_exn t [] ~info ~strategy:`Set (fun tree ->
@@ -174,7 +176,9 @@ let move t ~src ~dest =
             Some tree
         | None -> None
     )
+
 let () =
+    Eio_main.run @@ fun _ ->
     let t = main_branch config in
     let info = info "move a -> foo" in
     move t ~src:["a"] ~dest:["foo"] ~info
@@ -229,7 +233,9 @@ For example, by using `Men_store_json_value`, we can assign
 
 ```ocaml
 let contents_equal = Irmin.Type.(unstage (equal Mem_store_json_value.contents_t))
+
 let () =
+    Eio_main.run @@ fun _ ->
     let module Store = Mem_store_json_value in
     let module Info = Irmin_unix.Info(Store.Info) in
     let repo = Store.Repo.v config in
@@ -254,6 +260,7 @@ the key `a/b`, we will get the following object back:
 
 ```ocaml
 let () =
+    Eio_main.run @@ fun _ ->
     let module Store = Mem_store_json_value in
     let module Info = Irmin_unix.Info(Store.Info) in
     let module Proj = Irmin.Json_tree(Store) in

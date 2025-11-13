@@ -7,12 +7,12 @@ authors: "Craig Ferguson <me@craigfe.io>"
 homepage: "https://github.com/tarides/irmin.org"
 bug-reports: "https://github.com/tarides/irmin.org/issues"
 depends: [
-  "ocaml" {>= "4.06.0"}
-  "dune" {>= "1.11.0"}
-  "irmin" {with-test}
-  "irmin-cli" {with-test}
+  "ocaml" {>= "5.1.0"}
+  "dune" {>= "3.5.0"}
+  "irmin" {"dev" & with-test}
+  "irmin-cli" {"dev" & with-test}
   "digestif" {>= "1.0.0"}
-  "mdx" {>= "1.8.1"}
+  "mdx" {>= "2.0.0"}
   "lwt" {with-test}
 ]
 build: [
@@ -22,15 +22,15 @@ build: [
 ]
 dev-repo: "git+https://github.com/tarides/irmin.org.git"
 pin-depends: [
-  ["irmin.dev" "git+https://github.com/mirage/irmin#eio"]
-  ["irmin-git.dev" "git+https://github.com/mirage/irmin#eio"]
-  ["irmin-server.dev" "git+https://github.com/mirage/irmin#eio"]
-  ["irmin-client.dev" "git+https://github.com/mirage/irmin#eio"]
-  ["irmin-pack.dev" "git+https://github.com/mirage/irmin#eio"]
-  ["irmin-tezos.dev" "git+https://github.com/mirage/irmin#eio"]
-  ["irmin-graphql.dev" "git+https://github.com/mirage/irmin#eio"]
-  ["irmin-cli.dev" "git+https://github.com/mirage/irmin#eio"]
-  ["ppx_irmin.dev" "git+https://github.com/mirage/irmin#eio"]
+  ["irmin.dev" "git+https://github.com/mirage/irmin#a76dfaa3012713b58d4b9e471d471f1caf5e89bf"]
+  ["irmin-git.dev" "git+https://github.com/mirage/irmin#a76dfaa3012713b58d4b9e471d471f1caf5e89bf"]
+  ["irmin-server.dev" "git+https://github.com/mirage/irmin#a76dfaa3012713b58d4b9e471d471f1caf5e89bf"]
+  ["irmin-client.dev" "git+https://github.com/mirage/irmin#a76dfaa3012713b58d4b9e471d471f1caf5e89bf"]
+  ["irmin-pack.dev" "git+https://github.com/mirage/irmin#a76dfaa3012713b58d4b9e471d471f1caf5e89bf"]
+  ["irmin-tezos.dev" "git+https://github.com/mirage/irmin#a76dfaa3012713b58d4b9e471d471f1caf5e89bf"]
+  ["irmin-graphql.dev" "git+https://github.com/mirage/irmin#a76dfaa3012713b58d4b9e471d471f1caf5e89bf"]
+  ["irmin-cli.dev" "git+https://github.com/mirage/irmin#a76dfaa3012713b58d4b9e471d471f1caf5e89bf"]
+  ["ppx_irmin.dev" "git+https://github.com/mirage/irmin#a76dfaa3012713b58d4b9e471d471f1caf5e89bf"]
   [ "irmin-watcher.dev" "git+https://github.com/patricoferris/irmin-watcher#d0e92b4ba5631b5f4dc0f3c00d97e79542dba45d" ]
   [ "index.dev"    "git+https://github.com/mirage/index#6e84bed48db8ab53a09926b45d899815c30f2b39"     ]
 
