@@ -9,11 +9,12 @@ bug-reports: "https://github.com/tarides/irmin.org/issues"
 depends: [
   "ocaml" {>= "5.1.0"}
   "dune" {>= "3.5.0"}
-  "irmin" {"dev" & with-test}
-  "irmin-cli" {"dev" & with-test}
+  "irmin" {= "dev" & with-test}
+  "irmin-cli" {= "dev" & with-test}
   "digestif" {>= "1.0.0"}
   "mdx" {>= "2.0.0"}
   "lwt" {with-test}
+  "eio_main"
 ]
 build: [
   ["dune" "subst"] {pinned}
