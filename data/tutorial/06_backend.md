@@ -105,7 +105,7 @@ association, and returns the hash:
 
   let add t value =
       let hash = K.hash (fun f -> f (encode_value value)) in
-      let () = unsafe_add t hash value in
+      unsafe_add t hash value;
       hash
 ```
 
@@ -239,7 +239,7 @@ requires an atomic check and set:
           | None ->
             H.Tbl.remove t key
         in
-        let () = W.notify w key set_value in
+        W.notify w key set_value;
         true
     ) else false
 ```

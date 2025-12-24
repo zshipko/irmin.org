@@ -134,7 +134,7 @@ let () =
     Eio_main.run @@ fun _ ->
     let t = main_branch config in
     (* Set a/b/c to "Hello, Irmin!" *)
-    let () = Mem_store.set_exn t ["a"; "b"; "c"] "Hello, Irmin!" ~info:(info "my first commit") in
+    Mem_store.set_exn t ["a"; "b"; "c"] "Hello, Irmin!" ~info:(info "my first commit");
     (* Get a/b/c *)
     let s = Mem_store.get t ["a"; "b"; "c"] in
     assert (s = "Hello, Irmin!")
@@ -205,7 +205,7 @@ let remote = Git_mem_store.remote "git://github.com/mirage/irmin.git"
 let () =
     let repo = Git_mem_store.Repo.v config in
     let t = Git_mem_store.main in
-    let () = Sync.pull_exn t remote `Set in
+    Sync.pull_exn t remote `Set;
     let list = Git_mem_store.list t [] in
     List.iter (fun (step, kind) ->
         match kind with
@@ -241,7 +241,7 @@ let () =
     let repo = Store.Repo.v config in
     let t = Store.main repo in
     let value = `O ["x", `Float 1.; "y", `Float 2.; "z", `Float 3.] in
-    let () = Store.set_exn t ["a"; "b"; "c"] value ~info:(Info.v "set a/b/c") in
+    Store.set_exn t ["a"; "b"; "c"] value ~info:(Info.v "set a/b/c");
     let x = Store.get t ["a"; "b"; "c"] in
     assert (contents_equal value x)
 ```
@@ -267,7 +267,7 @@ let () =
     let repo = Store.Repo.v config in
     let t = Store.main repo in
     let value = `O ["test", `O ["foo", `String "bar"]; "x", `Float 1.; "y", `Float 2.; "z", `Float 3.] in
-    let () = Proj.set t ["a"; "b"; "c"] value ~info:(Info.v "set a/b/c") in
+    Proj.set t ["a"; "b"; "c"] value ~info:(Info.v "set a/b/c");
     let x = Store.get t ["a"; "b"; "c"; "x"] in
     assert (contents_equal (`Float 1.) x);
     let x = Store.get t ["a"; "b"; "c"; "test"; "foo"] in

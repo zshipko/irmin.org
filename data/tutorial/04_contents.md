@@ -167,8 +167,8 @@ let () =
     let config = Irmin_mem.config () in
     let repo = Car_store.Repo.v config in
     let t = Car_store.main repo in
-    let () = add_car t "5Y2SR67049Z456146" car_a in
-    let () = add_car t "2FAFP71W65X110910" car_b in
+    add_car t "5Y2SR67049Z456146" car_a;
+    add_car t "2FAFP71W65X110910" car_b;
     let car = Car_store.get t ["2FAFP71W65X110910"] in
     assert (car.license = car_b.license);
     assert (car.year = car_b.year)
@@ -278,11 +278,11 @@ let () =
     let repo = S.Repo.v cfg in
     let main = S.main repo in
     (* Set [foo] to ["bar"] on main branch *)
-    let () = S.set_exn main ["foo"] (Value.v "bar") ~info:(I.v "set foo on main branch") in
+    S.set_exn main ["foo"] (Value.v "bar") ~info:(I.v "set foo on main branch");
     (* Access example branch *)
     let example = S.of_branch repo "example" in
     (* Set [foo] to ["baz"] on example branch *)
-    let () = S.set_exn example ["foo"] (Value.v "baz") ~info:(I.v "set foo on example branch") in
+    S.set_exn example ["foo"] (Value.v "baz") ~info:(I.v "set foo on example branch");
     (* Merge the example into main branch *)
     let m = S.merge_into ~into:main example ~info:(I.v "merge example into main") in
     match m with
