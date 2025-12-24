@@ -25,6 +25,7 @@ dev-repo: "git+https://github.com/tarides/irmin.org.git"
 pin-depends: [
   ["irmin.dev" "git+https://github.com/mirage/irmin#a76dfaa3012713b58d4b9e471d471f1caf5e89bf"]
   ["irmin-git.dev" "git+https://github.com/mirage/irmin#a76dfaa3012713b58d4b9e471d471f1caf5e89bf"]
+  ["irmin-fs.dev" "git+https://github.com/mirage/irmin#a76dfaa3012713b58d4b9e471d471f1caf5e89bf"]
   ["irmin-server.dev" "git+https://github.com/mirage/irmin#a76dfaa3012713b58d4b9e471d471f1caf5e89bf"]
   ["irmin-client.dev" "git+https://github.com/mirage/irmin#a76dfaa3012713b58d4b9e471d471f1caf5e89bf"]
   ["irmin-pack.dev" "git+https://github.com/mirage/irmin#a76dfaa3012713b58d4b9e471d471f1caf5e89bf"]
